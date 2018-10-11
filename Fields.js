@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import {MapView} from 'expo';
+import { MapView } from 'expo';
 
 export default class Maps extends React.Component{
   render() {
