@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "HolyCity",
+    "name": "Holy City Classic",
     "description": "Holy City Classic - Charleston, SC",
     "slug": "HolyCity",
     "privacy": "public",
@@ -11,7 +11,7 @@
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {

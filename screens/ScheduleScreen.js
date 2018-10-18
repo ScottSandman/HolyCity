@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
-import { Game } from '../components/Schedule'
-import { fetchGames } from '../api/api'
+import Game from '../components/Game'
+import { fetchGames } from '../api/scheduleApi'
 
 export default class ScheduleScreen extends React.Component {
   static navigationOptions = {
@@ -17,10 +17,11 @@ export default class ScheduleScreen extends React.Component {
   }
 
   componentDidMount() {
-    if (Date.now() > games['scheduleDate']) {
+    // if (Date.now() > games['scheduleDate']) {
       this.setState({isPosted: true})
       this.getGames()
-    }
+    // }
+      console.log(this.state.games)
   }
 
   getGames = async () => {
@@ -29,7 +30,7 @@ export default class ScheduleScreen extends React.Component {
   }
 
   render() {
-    if (!isPosted) {
+    if (!this.state.isPosted) {
       return (
         <View style={styles.container}>
           <Image
@@ -42,17 +43,18 @@ export default class ScheduleScreen extends React.Component {
     } else {
       return (
         <View sytle={styles.container}>
-          <View flexDirection='row'>
-            <Text>Game</Text>
-            <Text>Time</Text>
-            <Text>Home</Text>
-            <Text>Away</Text>
-            <Text>Field</Text>
+          <View flexDirection='row' style={{ paddingTop: 0, justifyContent: 'center', backgroundColor: '#f4e542', }}>
+            <Text style={[styles.schedule, {width: '12%'}]}>Game</Text>
+            <Text style={[styles.schedule, {width: '12%'}]}>Time</Text>
+            <Text style={[styles.schedule, {width: '28%'}]}>Home</Text>
+            <Text style={[styles.schedule, {width: '28%'}]}>Away</Text>
+            <Text style={[styles.schedule, {width: '15%'}]}>Field</Text>
           </View>
           <FlatList
             renderItem = {({item}) => <Game {...item} />}
             data = {this.state.games}
-            keyExtractor = {(item, index) => index}
+            keyExtractor = {(item, index) => index.toString()}
+            style = {{marginBottom: 45,}}
           />
         </View>
       );
@@ -65,10 +67,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    // justifyContent: 'center',
-    paddingLeft: 20,
-    paddingRight: 20,
-
+    // paddingLeft: 20,
+    // paddingRight: 20,
   },
 
   text: {
@@ -76,4 +76,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+
+  schedule: {
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: 10,
+    paddingBottom: 10,
+    textAlign: 'center',
+  }
 });

@@ -7,7 +7,7 @@ import {
   createDrawerNavigator,
 } from 'react-navigation'
 
-import {Constants} from 'expo'
+import { Constants } from 'expo'
 import { Ionicons } from '@expo/vector-icons'
 
 import ScheduleScreen from './screens/ScheduleScreen'
@@ -80,9 +80,6 @@ MainTabs.navigationOptions = ({navigation}) => {
   const { routeName } = navigation.state.routes[navigation.state.index];
 
   const options = {
-    contentOptions: {
-      drawerBackgroundColor: '#f4e542',
-    },
     headerTitle: routeName,
     headerStyle: {
       backgroundColor: '#99badd',
